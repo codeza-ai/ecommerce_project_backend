@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors =  require("cors");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 const connectMon = require("./connectmon.js");
 const restrictToLoggedIn = require("./middlewares/authmiddle.js");
@@ -38,6 +38,6 @@ app.use("/products/update", restrictToLoggedIn);
 app.use("/products", manageProducts);
 
 app.listen(PORT, ()=> {
-    console.log(`Backend server is running on http://localhost:${PORT}`);
+    console.log(`Started on port - ${PORT}`);
 
 })
